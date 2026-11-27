@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <style>
+    .motion { stroke: #285ee5; }
+    .rehearsal { stroke: #719cfa; }
+    .anchor { fill: #173db1; }
+    @media (prefers-color-scheme: dark) {
+      .motion { stroke: #548aff; }
+      .rehearsal { stroke: #a9c5ff; }
+      .anchor { fill: #d4e2ff; }
+    }
+  </style>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path class="motion" stroke-width="4.4"
+          d="M11 36C6 27 14 12 25 8c8-3 16 1.2 16 8.4C41 25.5 28.8 35 11 36Z"/>
+    <path class="rehearsal" stroke-width="3.6"
+          d="M11 36c3.1-7.9 10.1-17 17.4-17 4 0 5.2 3.4 2.4 6.8-3.7 4.8-11.9 8.7-19.8 10.2"/>
+  </g>
+  <circle class="anchor" cx="11" cy="36" r="4"/>
+</svg>
