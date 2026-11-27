@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f9fd" />
+    <meta
+      name="description"
+      content="WorldRehearsal is a training-free agent system for control and memory in video world models. Explore synchronized visual plans and generated worlds across five frozen backbones."
+    />
+    <meta property="og:title" content="WorldRehearsal — Control meets memory" />
+    <meta
+      property="og:description"
+      content="Rehearse the motion. Remember the world. A training-free agent system for video world models."
+    />
+    <meta property="og:type" content="website" />
+    <title>WorldRehearsal · Control meets memory</title>
+    <link rel="icon" href="assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="fonts.css" />
+    <link rel="stylesheet" href="styles.css?v=3" />
+    <script src="app.js?v=4" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#overview">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="WorldRehearsal home"
+        ><img
+          src="assets/mark.svg"
+          width="29"
+          height="29"
+          alt=""
+        />WorldRehearsal</a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#explore">Explore</a><a href="#method">Method</a
+        ><a href="#results">Results</a><a href="#insights">Insights</a>
+      </nav>
+      <button
+        class="menu-button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        Menu
+      </button>
+    </header>
+    <nav
+      id="mobile-menu"
+      class="mobile-menu"
+      aria-label="Mobile navigation"
+      hidden
+    >
+      <a href="#explore">Explore the worlds</a><a href="#method">How it works</a
+      ><a href="#results">Results</a><a href="#insights">Research insights</a
+      >
+    </nav>
+    <main>
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow">CONTROL MEETS MEMORY</p>
+          <h1>
+            Rehearse the motion.<br /><span
+              >Remember<br />
+              the world.</span
+            >
+          </h1>
+          <p class="hero-description">
+            A training-free agent system that helps video world models follow
+            your instructions and hold on to the world they create.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#explore">Explore the worlds</a
+            >
+          </div>
+          <p class="hero-detail">
+            Five frozen backbones. No additional model training.
+          </p>
+        </div>
+        <div class="hero-visual">
+          <div class="orbit" aria-hidden="true"></div>
+          <div class="hero-caption-top">
+            <span>REFERENCE AND GENERATION</span
+            ><span>WorldRehearsal / LTX</span>
+          </div>
+          <div class="hero-player-shell">
+            <div
+              class="compare hero-compare"
+              data-player="hero"
+              data-scene="kitchen"
+              data-mode="reference"
+            >
+              <img
+                class="initial-poster"
+                src="assets/images/kitchen-harness.webp"
+                alt="A red kettle in a sunlit kitchen"
+              />
+            </div>
+          </div>
+          <div class="hero-caption-bottom">
+            <span>Synchronized comparison</span
+            ><span class="drag-cue">Drag the divider</span>
+          </div>
+          <div class="hero-scenes" aria-label="Hero scene">
+            <button
+              class="active"
+              data-hero-scene="kitchen"
+              aria-pressed="true"
+            >
+              Kitchen</button
+            ><button data-hero-scene="campus" aria-pressed="false">
+              Campus</button
+            ><button data-hero-scene="beach" aria-pressed="false">Coast</button>
+          </div>
+        </div>
+        <div class="hero-bottom">
+          <span>TRAINING-FREE VIDEO WORLD MODELS</span
+          ><a href="#overview">Project overview</a>
+        </div>
+      </section>
+      <section class="overview wrap section" id="overview">
+        <div class="section-intro">
+          <p class="eyebrow">THE IDEA</p>
+          <h2>A world should do more<br /> than look convincing.</h2>
+        </div>
+        <div class="overview-copy">
+          <p class="lead">
+            It should go where you ask.<br /> And recognize where it has been.
+          </p>
+          <p>
+            Pretrained video models have rich visual priors, but reliable motion
+            and persistent scene memory remain difficult. WorldRehearsal
+            separates these responsibilities: an agent maintains a renderable
+            world and historical evidence, while a frozen video model turns
+            their plans into visual observations.
+          </p>
+          <p>
+            The generated observations feed back into the next interaction.
+            Adaptation happens in the conditions and the persistent state,
+            without updating model parameters.
+          </p>
+        </div>
+        <div class="stat-strip">
+          <div>
+            <strong>+15.89<span>pts</span></strong>
+            <p>WBench navigation</p>
+          </div>
+          <div>
+            <strong>+47.78<span>pts</span></strong>
+            <p>WorldMark navigation</p>
+          </div>
+          <div>
+            <strong>+65.51<span>pts</span></strong>
+            <p>WorldMark Revisit-Z</p>
+          </div>
+          <div>
+            <strong>5<span>backbones</span></strong>
+            <p>One external agent system</p>
+          </div>
+        </div>
+        <p class="small-note stats-note">
+          Equal-weight averages across five backbones. WorldMark navigation
+          averages four motion families. Revisit-Z jointly reflects return
+          execution and content retention.
+        </p>
+      </section>
+      <section class="explore-section section" id="explore">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">FROM REFERENCE TO REALIZATION</p>
+              <h2>Look inside the generation.</h2>
+            </div>
+            <p>
+              Slide between the spatial reference and the generated video. Both
+              videos play at the same timestamp.
+            </p>
+          </div>
+          <div class="scene-tabs" role="group" aria-label="Select a scene">
+            <button
+              class="scene-tab active"
+              data-scene="kitchen"
+              aria-pressed="true"
+            >
+              <img
+                src="assets/images/kitchen-harness.webp"
+                alt=""
+                loading="lazy"
+              /><span>Kitchen<small>LTX-2.5</small></span></button
+            ><button class="scene-tab" data-scene="campus" aria-pressed="false">
+              <img
+                src="assets/images/campus-harness.webp"
+                alt=""
+                loading="lazy"
+              /><span>Campus<small>MiniMax-H3</small></span></button
+            ><button class="scene-tab" data-scene="beach" aria-pressed="false">
+              <img
+                src="assets/images/beach-harness.webp"
+                alt=""
+                loading="lazy"
+              /><span>Coast<small>LTX-2.5</small></span></button
+            ><button class="scene-tab" data-scene="garage" aria-pressed="false">
+              <img
+                src="assets/images/garage-harness.webp"
+                alt=""
+                loading="lazy"
+              /><span>Parking garage<small>MiniMax-H3</small></span>
+            </button>
+          </div>
+          <div class="demo-toolbar">
+            <div>
+              <h3 id="scene-title">The red kettle returns.</h3>
+              <p id="scene-description">
+                Follow the camera through the kitchen and look for the kettle as
+                the view changes.
+              </p>
+            </div>
+            <fieldset class="mode-switch">
+              <legend class="sr-only">Comparison mode</legend>
+              <label
+                ><input
+                  type="radio"
+                  name="comparison-mode"
+                  value="reference"
+                  checked
+                /><span>Reference / Generation</span></label
+              ><label
+                ><input
+                  type="radio"
+                  name="comparison-mode"
+                  value="baseline"
+                /><span>Baseline / Ours</span></label
+              >
+            </fieldset>
+          </div>
+          <div
+            class="compare main-compare"
+            data-player="explorer"
+            data-scene="kitchen"
+            data-mode="reference"
+          >
+            <img
+              class="initial-poster"
+              src="assets/images/kitchen-harness.webp"
+              alt="Kitchen generation example"
+              loading="lazy"
+            />
+          </div>
+          <div class="demo-footnote">
+            <p>
+              <strong id="demo-type"
+                >The reference shows the rendered spatial plan.</strong
+              >
+              Four consecutive segments are shown in their original order.
+            </p>
+            <p>Drag, tap, or use the arrow keys on the divider.</p>
+          </div>
+        </div>
+      </section>
+      <section class="section wrap method-section" id="method">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A STATEFUL AGENT HARNESS</p>
+            <h2>Plan. Generate.<br /> Observe. Remember.</h2>
+          </div>
+          <p>
+            The agent handles reasoning and memory. The video model handles
+            visual synthesis. Each generation becomes evidence for the next.
+          </p>
+        </div>
+        <figure class="method-figure">
+          <button
+            class="method-image-button"
+            data-open-method
+            aria-label="Enlarge the WorldRehearsal architecture"
+          >
+            <img
+              src="assets/images/method.svg"
+              width="1397"
+              height="635"
+              alt="WorldRehearsal architecture: world grounding, historical memory, reference and prompt construction, frozen video generation, and observation feedback"
+              loading="lazy"
+            />
+          </button>
+          <figcaption class="figure-links">
+            <button data-open-method>Enlarge diagram</button>
+            <a href="assets/documents/method.pdf" target="_blank" rel="noopener"
+              >Open figure PDF</a
+            >
+          </figcaption>
+        </figure>
+        <div class="method-details">
+          <div class="method-tabs" role="tablist" aria-label="Method stages">
+            <button
+              role="tab"
+              id="tab-ground"
+              aria-controls="stage-panel"
+              aria-selected="true"
+              data-stage="ground"
+            >
+              Ground the world</button
+            ><button
+              role="tab"
+              id="tab-rehearse"
+              aria-controls="stage-panel"
+              aria-selected="false"
+              tabindex="-1"
+              data-stage="rehearse"
+            >
+              Rehearse the motion</button
+            ><button
+              role="tab"
+              id="tab-remember"
+              aria-controls="stage-panel"
+              aria-selected="false"
+              tabindex="-1"
+              data-stage="remember"
+            >
+              Recall the evidence</button
+            ><button
+              role="tab"
+              id="tab-observe"
+              aria-controls="stage-panel"
+              aria-selected="false"
+              tabindex="-1"
+              data-stage="observe"
+            >
+              Close the loop
+            </button>
+          </div>
+          <div
+            id="stage-panel"
+            role="tabpanel"
+            aria-labelledby="tab-ground"
+            tabindex="0"
+          >
+            <h3>Geometry gives the plan a place to happen.</h3>
+            <p>
+              VGGT supplies depth and camera geometry. VLM-guided SAM3 regions
+              attach semantic identities to visible surfaces. The resulting
+              world is a partial, renderable spatial hypothesis grounded in
+              observations.
+            </p>
+            <p class="stage-principle">
+              Static scenery, camera-carried foreground, and controlled actors
+              need different motion representations.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="results-section section" id="results">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">CROSS-BACKBONE EVIDENCE</p>
+              <h2>Stronger control.<br /> Across frozen generators.</h2>
+            </div>
+            <p>
+              Five backbones, two benchmarks. We evaluate navigation,
+              memory-related behavior, and image quality separately.
+            </p>
+          </div>
+          <div class="results-controls">
+            <div
+              class="metric-tabs"
+              role="group"
+              aria-label="Select evaluation metric"
+            >
+              <button data-metric="navi" class="active" aria-pressed="true">
+                WBench Navi</button
+              ><button data-metric="worldmark" aria-pressed="false">
+                WorldMark Navi</button
+              ><button data-metric="revisit" aria-pressed="false">
+                Revisits</button
+              ><button data-metric="image" aria-pressed="false">
+                Image quality
+              </button>
+            </div>
+            <p class="chart-legend">
+              <span class="legend-baseline">Baseline</span
+              ><span class="legend-ours">WorldRehearsal</span>
+            </p>
+          </div>
+          <div class="results-body">
+            <div
+              id="result-chart"
+              class="result-chart"
+              aria-live="polite"
+            ></div>
+            <div class="result-reading">
+              <p class="metric-kicker" id="metric-kicker">
+                WBENCH NAVI OVERALL
+              </p>
+              <strong id="metric-number">+15.89</strong
+              ><span id="metric-unit">points on average</span>
+              <h3 id="metric-title">Every backbone improves.</h3>
+              <p id="metric-description">
+                Navigation gains range from 10.54 to 20.66 points. The benefit
+                recurs across the tested generator architectures.
+              </p>
+            </div>
+          </div>
+          <details class="score-details">
+            <summary>
+              Explore the full scores <span aria-hidden="true">+</span>
+            </summary>
+            <div
+              class="table-scroll"
+              tabindex="0"
+              role="region"
+              aria-label="Complete benchmark scores"
+            >
+              <table id="full-results"></table>
+            </div>
+            <p class="small-note">
+              All scores are on a 0–100 scale, higher is better. DA, MP, MS, and
+              RL each average translation and rotation equally. Image averages
+              benchmark-level MUSIQ means equally. Scores are transcribed from
+              the supplied manuscript.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="section wrap insights-section" id="insights">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">WHAT WE LEARNED</p>
+            <h2>The conditions<br /> make the difference.</h2>
+          </div>
+          <p>
+            A frozen generator still responds to how information is presented,
+            what it contains, and which history is made relevant.
+          </p>
+        </div>
+        <div class="insight-row">
+          <div class="insight-copy">
+            <p class="topic-label">REFERENCE REPRESENTATION</p>
+            <h3>The same plan can be expressed differently.</h3>
+            <p>
+              Gray surfaces with structural lines improve navigation and three
+              consistency measures over no reference. White and gray variants
+              share the same geometry and trajectory.
+            </p>
+            <p class="insight-number">
+              66.05 <span>to</span> 86.67 <small>Navi</small>
+            </p>
+          </div>
+          <div class="insight-evidence">
+            <div class="insight-demo">
+              <div class="target-switch" role="group" aria-label="Canyon comparison" data-target-player="template">
+                <button class="active" data-view="outputs" aria-pressed="true">Compare outputs</button>
+                <button data-view="target" aria-pressed="false">Compare with target</button>
+              </div>
+              <div class="compare insight-compare" data-player="template"
+                data-scene="template" data-mode="template">
+                <img
+                  class="initial-poster"
+                  src="assets/images/template-gray.webp"
+                  alt="Generated canyon scene with gray surfaces and structural lines as reference"
+                  loading="lazy"
+                />
+              </div>
+              <p class="insight-caption"><strong>Target motion.</strong> Move forward through the canyon while tilting the camera down toward the river.</p>
+            </div>
+            <details>
+              <summary>
+                Representation scores <span aria-hidden="true">+</span>
+              </summary>
+              <div class="table-scroll" tabindex="0">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Template</th>
+                      <th>Geom.</th>
+                      <th>Photom.</th>
+                      <th>Motion.</th>
+                      <th>Navi</th>
+                      <th>Image</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>No reference</th>
+                      <td>96.40</td>
+                      <td>46.75</td>
+                      <td>98.50</td>
+                      <td>66.05</td>
+                      <td>67.81</td>
+                    </tr>
+                    <tr>
+                      <th>White + structure</th>
+                      <td>96.80</td>
+                      <td>46.09</td>
+                      <td>98.80</td>
+                      <td>85.51</td>
+                      <td><b>68.55</b></td>
+                    </tr>
+                    <tr>
+                      <th>Gray + structure</th>
+                      <td><b>97.08</b></td>
+                      <td><b>49.40</b></td>
+                      <td><b>98.93</b></td>
+                      <td><b>86.67</b></td>
+                      <td>68.43</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="small-note">
+                84 paired cases. Motion. means Motion Smoothness. These are
+                individual metrics, not a composite consistency score.
+              </p>
+            </details>
+          </div>
+        </div>
+        <div class="insight-row">
+          <div class="insight-copy">
+            <p class="topic-label">REFERENCE CONSTRUCTION</p>
+            <h3>Motion should not erase the foreground.</h3>
+            <p>
+              Depth-only guidance can create strong apparent motion while losing
+              a carried object. Coordinating geometry, semantic regions, and
+              foreground roles better preserves entities.
+            </p>
+            <p class="small-note">
+              A qualitative example complements the aggregate comparison; it is
+              not a claim that every case improves.
+            </p>
+          </div>
+          <div class="insight-evidence">
+            <div class="insight-demo">
+              <div class="target-switch" role="group" aria-label="Photography comparison" data-target-player="construction">
+                <button class="active" data-view="outputs" aria-pressed="true">Compare outputs</button>
+                <button data-view="target" aria-pressed="false">Compare with target</button>
+              </div>
+              <div class="compare insight-compare" data-player="construction"
+                data-scene="construction" data-mode="construction">
+                <img
+                  class="initial-poster"
+                  src="assets/images/construction-gsv.webp"
+                  alt="Generated first-person scene with the handheld camera and both hands visible"
+                  loading="lazy"
+                />
+              </div>
+              <p class="insight-caption"><strong>Target behavior.</strong> Keep the handheld camera and both hands in view as the viewpoint moves.</p>
+            </div>
+            <details>
+              <summary>
+                Reference construction scores <span aria-hidden="true">+</span>
+              </summary>
+              <div class="table-scroll" tabindex="0">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Reference</th>
+                      <th>Subject</th>
+                      <th>View</th>
+                      <th>Geom.</th>
+                      <th>Navi</th>
+                      <th>Image</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>None</th>
+                      <td>93.58</td>
+                      <td>87.74</td>
+                      <td>96.21</td>
+                      <td>65.62</td>
+                      <td>68.51</td>
+                    </tr>
+                    <tr>
+                      <th>VGGT</th>
+                      <td>87.48</td>
+                      <td>66.01</td>
+                      <td>96.56</td>
+                      <td>86.96</td>
+                      <td>67.97</td>
+                    </tr>
+                    <tr>
+                      <th>SAM3</th>
+                      <td>92.75</td>
+                      <td>78.14</td>
+                      <td>96.17</td>
+                      <td>73.91</td>
+                      <td>68.85</td>
+                    </tr>
+                    <tr>
+                      <th>VGGT + SAM3</th>
+                      <td>88.10</td>
+                      <td>66.89</td>
+                      <td>95.92</td>
+                      <td>75.57</td>
+                      <td><b>68.87</b></td>
+                    </tr>
+                    <tr>
+                      <th>GSV (Ours)</th>
+                      <td><b>94.96</b></td>
+                      <td><b>89.89</b></td>
+                      <td><b>96.81</b></td>
+                      <td><b>89.73</b></td>
+                      <td>68.11</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="small-note">
+                Subject and View use 29 applicable cases; other columns use 84.
+                The complete construction changes several linked design
+                decisions.
+              </p>
+            </details>
+          </div>
+        </div>
+        <div class="insight-row memory-insight">
+          <div class="insight-copy">
+            <p class="topic-label">HISTORICAL EVIDENCE</p>
+            <h3>Remembering is also a conditioning problem.</h3>
+            <p>
+              Stored identity records and retrieved views complement the current
+              image. They inform the agent’s prompt, rather than becoming extra
+              image inputs to the generator.
+            </p>
+          </div>
+          <div class="insight-evidence">
+            <div class="insight-demo">
+              <div class="target-switch" role="group" aria-label="Coastal comparison" data-target-player="memory">
+                <button class="active" data-view="outputs" aria-pressed="true">Compare outputs</button>
+                <button data-view="target" aria-pressed="false">Compare with target</button>
+              </div>
+              <div class="compare insight-compare" data-player="memory"
+                data-scene="beach" data-mode="baseline">
+                <img
+                  class="initial-poster"
+                  src="assets/images/beach-harness.webp"
+                  alt="Generated view of the yellow surfboard on the beach"
+                  loading="lazy"
+                />
+              </div>
+              <p class="insight-caption"><strong>Target behavior.</strong> The surfboard should remain recognizable when the view returns to it. This coastal example compares the full systems. The table reports the historical-input ablation.</p>
+            </div>
+            <div class="table-scroll" tabindex="0">
+              <table class="memory-table">
+                <thead>
+                  <tr>
+                    <th>Agent evidence</th>
+                    <th>Spatial</th>
+                    <th>Gated S.</th>
+                    <th>Navi</th>
+                    <th>Image</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Current</th>
+                    <td>78.79</td>
+                    <td>76.11</td>
+                    <td>80.81</td>
+                    <td>66.32</td>
+                  </tr>
+                  <tr>
+                    <th>+ Records</th>
+                    <td>79.91</td>
+                    <td>76.83</td>
+                    <td>80.90</td>
+                    <td>66.38</td>
+                  </tr>
+                  <tr>
+                    <th>+ Retrieval</th>
+                    <td><b>80.32</b></td>
+                    <td><b>77.49</b></td>
+                    <td><b>82.10</b></td>
+                    <td><b>66.54</b></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="small-note">
+              Rows add evidence cumulatively. Records include the original
+              identity photograph and historical text. Small mean differences do
+              not imply uniform gains across cases.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="timing-section section" id="timing">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">WHEN THE REFERENCE MATTERS</p>
+              <h2>Same budget.<br /> Different moment.</h2>
+            </div>
+            <p>
+              Reference exposure has two dimensions: how long it lasts, and when
+              it happens. All configurations still execute all 11 denoising
+              calls.
+            </p>
+          </div>
+          <div class="timing-intro">
+            <p>
+              At the same six-call exposure, early reference guidance produces
+              stronger navigation than late guidance.
+            </p>
+            <div><strong>80.93</strong><span>Early [1,6]</span></div>
+            <div><strong>64.98</strong><span>Late [6,11]</span></div>
+          </div>
+          <div class="timing-toolbar">
+            <div
+              class="timing-switch"
+              role="group"
+              aria-label="Denoising example"
+            >
+              <button data-timing="canyon" aria-pressed="true" class="active">
+                Canyon descent</button
+              ><button data-timing="cathedral" aria-pressed="false">
+                Cathedral pan
+              </button>
+            </div>
+            <p>Six reference calls in both videos</p>
+          </div>
+          <div
+            class="compare timing-compare"
+            data-player="timing"
+            data-scene="canyon"
+            data-mode="timing"
+          >
+            <img
+              class="initial-poster"
+              src="assets/images/canyon-early.webp"
+              alt="Canyon denoising comparison"
+              loading="lazy"
+            />
+          </div>
+          <p class="timing-caption" id="timing-caption">
+            Canyon example: early guidance turns the view toward the river,
+            while late guidance retains more of the opening composition.
+          </p>
+          <div class="timing-findings">
+            <div>
+              <h3>Duration changes the trade-off.</h3>
+              <p>
+                Averaging over starts, increasing exposure from 1 to 10 calls
+                changes Navi from <strong>66.17 to 77.24</strong>, while
+                Aesthetic changes from <strong>65.38 to 64.12</strong>.
+              </p>
+            </div>
+            <div>
+              <h3>Placement changes the outcome.</h3>
+              <p>
+                At length 6, early guidance gains
+                <strong>15.95 Navi points</strong> over late guidance, with a
+                paired 95% bootstrap interval of <strong>[9.92, 22.23]</strong>.
+                Late guidance has a higher Aesthetic mean.
+              </p>
+            </div>
+          </div>
+          <p class="small-note">
+            Aggregate scores above use the 84-case study. Videos show individual
+            examples. These observations do not identify the internal mechanism
+            or establish one optimal schedule for every scene.
+          </p>
+        </div>
+      </section>
+      <section class="section wrap closing" id="resources">
+        <div>
+          <p class="eyebrow">EXPLORE THE RESEARCH</p>
+          <h2>About the research</h2>
+          <p>
+            WorldRehearsal: A Training-Free Agent System for Control and Memory
+            in Video World Models
+          </p>
+        </div>
+        <details class="citation">
+          <summary>Citation <span aria-hidden="true">+</span></summary>
+          <div class="citation-top">
+            <span>Manuscript · 2026</span
+            ><button id="copy-citation">Copy BibTeX</button>
+          </div>
+          <pre id="bibtex">
+@misc{worldrehearsal2026,
+  title = {WorldRehearsal: A Training-Free Agent System
+           for Control and Memory in Video World Models},
+  year = {2026},
+  note = {Research manuscript}
+}</pre
+          >
+          <p id="copy-status" aria-live="polite"></p>
+        </details>
+        <div class="scope">
+          <h3>Scope</h3>
+          <p>
+            The system requires compatible reference-conditioning interfaces.
+            Geometry and generated observations remain imperfect, image-quality
+            trade-offs vary by backbone, and additional agent and reconstruction
+            computation is not included in a matched end-to-end latency
+            comparison.
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="wrap footer">
+      <a class="brand" href="#top"
+        ><img
+          src="assets/mark.svg"
+          width="26"
+          height="26"
+          alt=""
+        />WorldRehearsal</a
+      >
+      <p>A training-free agent system for video world models.</p>
+      <a href="#top">Back to top</a>
+    </footer>
+    <dialog id="method-dialog" aria-label="WorldRehearsal architecture">
+      <div class="figure-dialog-toolbar">
+        <a href="assets/documents/method.pdf" target="_blank" rel="noopener">Open figure PDF</a>
+        <button class="dialog-close" aria-label="Close architecture">Close</button>
+      </div>
+      <img
+        src="assets/images/method.svg"
+        width="1397"
+        height="635"
+        loading="lazy"
+        alt="Full WorldRehearsal architecture"
+      />
+    </dialog>
+    <template id="compare-template"
+      ><div class="compare-stage" style="--split: 50%">
+        <video
+          class="video-right"
+          muted
+          playsinline
+          preload="none"
+          disablepictureinpicture
+        ></video
+        ><video
+          class="video-left"
+          muted
+          playsinline
+          preload="none"
+          disablepictureinpicture
+        ></video
+        ><span class="video-label label-left">Reference</span
+        ><span class="video-label label-right">Generation</span>
+        <div class="divider" aria-hidden="true">
+          <span class="divider-knob"
+            ><svg viewBox="0 0 28 20">
+              <path d="m10 5-5 5 5 5M18 5l5 5-5 5" /></svg
+          ></span>
+        </div>
+        <input
+          class="wipe-range"
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          aria-label="Reveal reference versus generation"
+        />
+        <p class="video-error" hidden>Video could not load. Please retry.</p>
+      </div>
+      <div class="player-controls">
+        <button class="play-toggle" aria-label="Play synchronized videos">
+          <svg viewBox="0 0 24 24" class="play-icon" aria-hidden="true">
+            <path d="m8 5 11 7-11 7z" /></svg
+          ><svg viewBox="0 0 24 24" class="pause-icon" aria-hidden="true">
+            <path d="M8 5v14M16 5v14" /></svg
+          ><span class="play-text">Play</span></button
+        ><button class="replay" aria-label="Replay videos">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 10a8 8 0 1 1 1 8M4 4v6h6" />
+          </svg></button
+        ><input
+          class="seek-range"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+          aria-label="Video playback position"
+        /><span class="time-display">0:00 / –</span
+        ><button class="fullscreen" aria-label="Open comparison full screen">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5" />
+          </svg>
+        </button></div
+    ></template>
+  </body>
+</html>
